@@ -1,11 +1,11 @@
-### Misc tech notes
+# Misc tech notes
 
-## OpenShift
+### OpenShift
 
-# Set OpenShift Project
+##### Set OpenShift Project
 oc project [project_name]
 
-# Show pods
+##### Show pods
 oc get pods
 
 
