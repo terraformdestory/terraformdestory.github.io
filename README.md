@@ -17,6 +17,8 @@ gcloud auth list
 
 gcloud config set project [project]
 
+gcloud config set compute/region [region]
+
 gcloud compute project-info add-metadata --metadata google-compute-default-region=[region]
 
 gcloud config configurations list
