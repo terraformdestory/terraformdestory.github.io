@@ -15,3 +15,9 @@ oc status
 oc logs -f [podname]
 
 
+## Google Cloud
+glcoud auth login
+gcloud auth list
+gcloud config set project [project]
+gcloud compute project-info add-metadata --metadata google-compute-default-region=[region]
+
