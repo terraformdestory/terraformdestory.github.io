@@ -19,6 +19,8 @@ gcloud config set project [project]
 
 gcloud compute project-info add-metadata --metadata google-compute-default-region=[region]
 
+gcloud config configurations list
+
 ## tmux
 crtl + b [command] (or : for tmux command prompt)
 
