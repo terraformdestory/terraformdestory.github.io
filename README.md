@@ -19,3 +19,20 @@ gcloud config set project [project]
 
 gcloud compute project-info add-metadata --metadata google-compute-default-region=[region]
 
+## tmux
+crtl + b [command] (or : for tmux command prompt)
+
+ctrl + b, d (detach)
+
+tmux ls
+
+tmux a -t [session] (attach to a specific session)
+
+#### Managing Panes
+ctrl + b, " (split horizontal)
+
+ctrl + b, % (split vertically)
+
+ctrl + b, [arrow] (navigate panes)
+
+ctrl +b, :, setw syncrhonize-panes on
