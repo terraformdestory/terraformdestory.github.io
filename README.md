@@ -35,4 +35,4 @@ ctrl + b, % (split vertically)
 
 ctrl + b, [arrow] (navigate panes)
 
-ctrl +b, :, setw syncrhonize-panes on
+ctrl + b, :, setw syncrhonize-panes on
