@@ -53,26 +53,45 @@ https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
 
 ## Docker
-#### Example Container Build
 ```sh
-git clone https://github.com/spkane/docker-node-hello.git \
-	--config core.autocrlf=input
-    
-docker build -t example/docker-node-hello:latest .
+docker login
 
-docker run --rm -ti 8a773166616c /bin/bash #Run a bash shell in a specific container layer
-```
-#### Run the Container Created in the Previous Steps
-```sh
-docker run -d -p 8080:8080 example/docker-node-hello:latest
-```
+docker pull ubuntu:latest
 
-#### Show running containers
-```sh
-docker ps
-```
+docker images
 
-#### Stop a container
-```sh
-docker stop b7145e06083f
+docker search [string]
+
+docker run busybox echo "hello from busybox"
+
+docker ps -a
+
+docker rm [container_id]
+docker rm $(docker ps -a -q -f status=exited)
+docker container prune
+
+docker run -it busybox sh
+
+docker run -d -P --name static-site prakhar1989/static-site
+docker port static-site # see ports now available on localhost
+
+docker run -p 8888:80 prakhar1989/static-site # specifcy custom ports
+
+docker stop [container id]
+
+#Dockerfile example
+FROM ubuntu:latest
+# USER root
+RUN apt-get -y update
+RUN apt-get install -y busybox
+# ADD ./supervisord/conf.d/* $SCPATH/ # copy a file
+
+#Deploying a flask app example
+git clone https://github.com/prakhar1989/docker-curriculum.git
+cd docker-curriculum/flask-app
+docker build -t [username]]/catnip .
+docker run -p 8888:5000 [username]/catnip
+# App will now be available on http://localhost:8888
+
+docker push [user_name]/[container_name] # publish a container to the registry
 ```
