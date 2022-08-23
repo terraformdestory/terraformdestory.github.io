@@ -96,3 +96,9 @@ docker run -p 8888:5000 [username]/catnip
 
 docker push [user_name]/[container_name] # publish a container to the registry
 ```
+## Hashicorp Vault
+
+```sh
+export VAULT_ADDR="https://your-vault-instance.net:8200/"
+vault login (copy token from the UI)
+vault read 
