@@ -95,6 +95,9 @@ docker run -p 8888:5000 [username]/catnip
 # App will now be available on http://localhost:8888
 
 docker push [user_name]/[container_name] # publish a container to the registry
+
+docker build -t [image name] .
+
 ```
 ## Hashicorp Vault
 
