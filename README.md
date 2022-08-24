@@ -99,25 +99,8 @@ docker push [user_name]/[container_name] # publish a container to the registry
 ## Hashicorp Vault
 
 ```sh
-$ export VAULT_ADDR="https://your-vault-instance.net:8200/"
-$ vault login (copy token from the UI)
-$ vault kv get some/vaultpath/secrets
-============== Secret Path ==============
-some/vaultpath/secrets
-
-======= Metadata =======
-Key                Value
----                -----
-created_time       2022-08-24T00:29:04.80274624Z
-custom_metadata    <nil>
-deletion_time      n/a
-destroyed          false
-version            3
-
-====== Data ======
-Key          Value
----          -----
-token        candybar
-
+export VAULT_ADDR="https://your-vault-instance.net:8200/" # set vault server address
+vault login (copy token from the UI)
+vault kv get some/vaultpath/secrets # show key/value pairs under the path some/vaultpath/secrets
 vault kv patch some/vaultpath/secrets token="bushwood" # set the key "token" and the value "bushwood" under the path some/vaultpath/secrets
 ```
