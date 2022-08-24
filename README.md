@@ -102,3 +102,6 @@ docker push [user_name]/[container_name] # publish a container to the registry
 export VAULT_ADDR="https://your-vault-instance.net:8200/"
 vault login (copy token from the UI)
 vault read 
+vault kv get some/vaultpath/secrets
+vault kv patch some/vaultpath/secrets token="bushwood" # set the key "token" and the value "bushwood" under the path some/vaultpath/secrets
+```
