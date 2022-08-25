@@ -24,6 +24,8 @@ gcloud config set compute/region [region]
 gcloud compute project-info add-metadata --metadata google-compute-default-region=[region]
 
 gcloud config configurations list
+
+gcloud sql instances list
 ```
 
 ## tmux
