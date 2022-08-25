@@ -26,6 +26,8 @@ gcloud compute project-info add-metadata --metadata google-compute-default-regio
 gcloud config configurations list
 
 gcloud sql instances list
+
+gcloud sql instances describe [instance_name]
 ```
 
 ## tmux
