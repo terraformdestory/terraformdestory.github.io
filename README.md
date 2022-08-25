@@ -9,6 +9,8 @@ oc get pods
 oc status
 
 oc logs -f [podname]
+
+oc get claim --all-namespaces
 ```
 
 ## Google Cloud
