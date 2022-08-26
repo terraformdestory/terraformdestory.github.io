@@ -8,6 +8,8 @@ oc get pods
 
 oc status
 
+oc get namespaces
+
 oc logs -f [podname]
 
 oc get claim --all-namespaces
