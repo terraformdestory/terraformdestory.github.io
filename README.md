@@ -11,6 +11,8 @@ oc status
 oc logs -f [podname]
 
 oc get claim --all-namespaces
+
+helm list -a
 ```
 
 ## Google Cloud
