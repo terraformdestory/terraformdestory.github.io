@@ -4,7 +4,7 @@
 ```sh
 oc project [project_name]
 
-oc get pods
+oc get pods --namespace=[namespace]
 
 oc status
 
