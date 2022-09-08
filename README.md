@@ -61,6 +61,15 @@ https://github.com/kelseyhightower/kubernetes-the-hard-way
 https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 #### Creating an admin user for the dashboard
 https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
+#### Misc Operations
+```sh
+# Deploy a single container as a Kubernetes pod and run a bash shell
+PODNAME=$(whoami)-$(uuidgen|cut -c1-5|tr '[:upper:]' '[:lower:]')
+kubectl run $PODNAME --image=some.image.registry.whatever/path/to/image_name:latest -it --restart=Never -- /bin/bash
+
+# Delete the pod
+kubectl delete pod $PODNAME
+```
 
 ## Docker
 https://docker-curriculum.com/
