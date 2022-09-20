@@ -2,6 +2,8 @@
 
 ## OpenShift
 ```sh
+oc login --token=[token from the console] --server=https://api.your-openshift-cluster.net:[port]
+
 oc project [project_name]
 
 oc get pods --namespace=[namespace]
