@@ -10,6 +10,10 @@ oc get pods --namespace=[namespace]
 
 oc status
 
+oc config get-contexts # show contexts defined in ~/.kube/config
+
+oc config use-context [context name] # set an active context for commands
+
 oc get namespaces
 
 oc logs -f [podname]
