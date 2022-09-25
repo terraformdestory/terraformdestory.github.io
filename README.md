@@ -138,7 +138,8 @@ vault kv patch some/vaultpath/secrets token="$VALUE" # set the key "token" and t
 ## GitHub
 #### Personal Access Token
 In the github.com UI go to: Profile, Settings, Developer settings
-    - Personal Access Token
-    - Generate New Token
+    * Personal Access Token
+    * Generate New Token
+    
 Create ~/.netrc file:
     machine github.com login [username] password [personal access token]
