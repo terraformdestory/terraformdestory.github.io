@@ -134,3 +134,11 @@ vault kv get -mount=some vaultpath/secrets # show key/value pairs under the path
 VALUE=$(echo $RANDOM | md5 | head -c 20)
 vault kv patch some/vaultpath/secrets token="$VALUE" # set the key "token" and the value "$VALUE" under the path some/vaultpath/secrets
 ```
+
+## GitHub
+#### Personal Access Token
+In the github.com UI go to: Profile, Settings, Developer settings
+    - Personal Access Token
+    - Generate New Token
+Create ~/.netrc file:
+    machine github.com login [username] password [personal access token]
