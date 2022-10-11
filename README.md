@@ -153,24 +153,24 @@ git stash pop # restores local changes
 
 ## Powers of 2
 ```
-2 to the power of 0 is 1
-2 to the power of 1 is 2
-2 to the power of 2 is 4
-2 to the power of 3 is 8
-2 to the power of 4 is 16
-2 to the power of 5 is 32
-2 to the power of 6 is 64
-2 to the power of 7 is 128
-2 to the power of 8 is 256
-2 to the power of 9 is 512
-2 to the power of 10 is 1024
-2 to the power of 11 is 2048
-2 to the power of 12 is 4096
-2 to the power of 13 is 8192
-2 to the power of 14 is 16384
-2 to the power of 15 is 32768
-2 to the power of 16 is 65536
-2 to the power of 17 is 131072
-2 to the power of 18 is 262144
-2 to the power of 19 is 524288
+2^0 = 1
+2^1 = 2
+2^2 = 4
+2^3 = 8
+2^4 = 16
+2^5 = 32
+2^6 = 64
+2^7 = 128
+2^8 = 256
+2^9 = 512
+2^10 = 1024
+2^11 = 2048
+2^12 = 4096
+2^13 = 8192
+2^14 = 16384
+2^15 = 32768
+2^16 = 65536
+2^17 = 131072
+2^18 = 262144
+2^19 = 524288
 ```
