@@ -135,7 +135,7 @@ VALUE=$(echo $RANDOM | md5 | head -c 20)
 vault kv patch some/vaultpath/secrets token="$VALUE" # set the key "token" and the value "$VALUE" under the path some/vaultpath/secrets
 ```
 
-## GitHub
+## GitHub / git
 #### Personal Access Token
 In the github.com UI go to: Profile, Settings, Developer settings
 *Personal Access Token
@@ -143,6 +143,12 @@ In the github.com UI go to: Profile, Settings, Developer settings
     
 Create ~/.netrc file:
 machine github.com login [username] password [personal access token]
+
+git stash to resolve push conflicts
+```
+git stash # caches local changes
+git pull # syncs from origin
+git stash pop # restores local changes
 
 ## Powers of 2
 ```
