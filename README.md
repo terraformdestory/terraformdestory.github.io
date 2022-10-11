@@ -149,6 +149,7 @@ git stash to resolve push conflicts
 git stash # caches local changes
 git pull # syncs from origin
 git stash pop # restores local changes
+```
 
 ## Powers of 2
 ```
