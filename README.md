@@ -21,6 +21,10 @@ oc logs -f [podname]
 oc get claim --all-namespaces
 
 helm list -a
+
+oc apply -f ./[job_definition].yml
+
+kubectl create job --from=[existing_job_defintion] [job_name]
 ```
 
 ## Google Cloud
