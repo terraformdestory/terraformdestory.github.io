@@ -25,6 +25,7 @@ helm list -a
 oc apply -f ./[job_definition].yml
 
 kubectl create job --from=[existing_job_defintion] [job_name]
+```
 
 #### K8s The Hardway Tutorial
 https://github.com/kelseyhightower/kubernetes-the-hard-way
