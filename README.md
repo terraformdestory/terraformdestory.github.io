@@ -1,6 +1,6 @@
 # Misc tech notes
 
-## OpenShift
+## OpenShift / Kubernetes
 ```sh
 oc login --token=[token from the console] --server=https://api.your-openshift-cluster.net:[port]
 
@@ -25,6 +25,21 @@ helm list -a
 oc apply -f ./[job_definition].yml
 
 kubectl create job --from=[existing_job_defintion] [job_name]
+
+#### K8s The Hardway Tutorial
+https://github.com/kelseyhightower/kubernetes-the-hard-way
+#### Deploying the Kubernetes Dashboard
+https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
+#### Creating an admin user for the dashboard
+https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
+#### Misc Operations
+```sh
+# Deploy a single container as a Kubernetes pod and run a bash shell
+PODNAME=$(whoami)-$(uuidgen|cut -c1-5|tr '[:upper:]' '[:lower:]')
+kubectl run $PODNAME --image=some.image.registry.whatever/path/to/image_name:latest -it --restart=Never -- /bin/bash
+
+# Delete the pod
+kubectl delete pod $PODNAME
 ```
 
 ## Google Cloud
@@ -63,23 +78,6 @@ ctrl + b, % (split vertically)
 ctrl + b, [arrow] (navigate panes)
 
 ctrl + b, :, setw syncrhonize-panes on
-
-## Kubernetes
-#### K8s The Hardway Tutorial
-https://github.com/kelseyhightower/kubernetes-the-hard-way
-#### Deploying the Kubernetes Dashboard
-https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
-#### Creating an admin user for the dashboard
-https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
-#### Misc Operations
-```sh
-# Deploy a single container as a Kubernetes pod and run a bash shell
-PODNAME=$(whoami)-$(uuidgen|cut -c1-5|tr '[:upper:]' '[:lower:]')
-kubectl run $PODNAME --image=some.image.registry.whatever/path/to/image_name:latest -it --restart=Never -- /bin/bash
-
-# Delete the pod
-kubectl delete pod $PODNAME
-```
 
 ## Docker
 https://docker-curriculum.com/
