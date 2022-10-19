@@ -78,7 +78,7 @@ ctrl + b, % (split vertically)
 
 ctrl + b, [arrow] (navigate panes)
 
-ctrl + b, :, setw syncrhonize-panes on
+ctrl + b, :, setw synchronize-panes on
 
 ## Docker
 https://docker-curriculum.com/
