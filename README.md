@@ -49,6 +49,8 @@ glcoud auth login
 
 gcloud auth list
 
+gcloud config set accessibility/screen_reader false
+
 gcloud config set project [project]
 
 gcloud config set compute/region [region]
