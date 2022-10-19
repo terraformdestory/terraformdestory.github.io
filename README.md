@@ -63,6 +63,25 @@ gcloud sql instances list
 
 gcloud sql instances describe [instance_name]
 ```
+### Deploy a Compute Engine VM
+```
+#!/bin/bash
+
+VM_PREFIX=$1
+IMAGE_FAMILY=ubuntu-2204-lts
+RND_STRING=$(echo $RANDOM|md5sum|cut -c1-4)
+GCP_ZONE=us-central1-b
+VM_NAME=$VM_PREFIX-$IMAGE_FAMILY-$RND_STRING
+IMAGE_PROJECT=ubuntu-os-cloud
+
+# Deploy Compute Engine VM instance
+gcloud compute instances create $VM_NAME \
+        --image-project=$IMAGE_PROJECT \
+        --image-family=$IMAGE_FAMILY \
+        --boot-disk-type=pd-standard \
+        --machine-type=e2-micro \
+        --zone=$GCP_ZONE
+```
 
 ## tmux
 crtl + b [command] (or : for tmux command prompt)
