@@ -198,3 +198,8 @@ git stash pop # restores local changes
 2^18 = 262144
 2^19 = 524288
 ```
+## ansible
+```
+ansible db_servers -m ping
+ansible-config dump --only-changed
+```
