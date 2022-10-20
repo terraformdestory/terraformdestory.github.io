@@ -200,6 +200,17 @@ git stash pop # restores local changes
 ```
 ## ansible
 ```
-ansible db_servers -m ping
+ansible --version
 ansible-config dump --only-changed
+
+# ansible adhoc commands
+ansible [host pattern] -m [module] -a [module arguments] -i [inventory file]
+ansible all -m ping
+ansible -m user -a 'name=newuser uid=4000 state=present' web1
+ansible -m user -a 'name=newuser uid=4000 state=absent' web1
+ansible all -m service -a "state=restarted name=sshd"
+
+#ansible modules
+ansible-doc -l
+ansible-doc ping
 ```
