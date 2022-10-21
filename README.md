@@ -209,6 +209,7 @@ ansible all -m ping
 ansible -m user -a 'name=newuser uid=4000 state=present' web1
 ansible -m user -a 'name=newuser uid=4000 state=absent' web1
 ansible all -m service -a "state=restarted name=sshd"
+ansible all -m package -a "name=httpd state=present"
 
 #ansible modules
 ansible-doc -l
