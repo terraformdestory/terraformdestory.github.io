@@ -317,12 +317,15 @@ sar -n DEV 1
 sar -n TCP,ETCP 1
 top
 ```
-## libvirt basics
-##### libvirt boot images: /var/lib/libvirt/boot
-##### libvirt disk images: /var/lib/libvirt/images/
-<br>
+## libvirt Examples
 
-### Install a VM (Note: You will need to connect to the VNC port once the domain starts)
+### Image Locations
+```
+/var/lib/libvirt/boot # libvirt boot images
+/var/lib/libvirt/images/ # libvirt disk images
+```
+### Installing  a VM <br> 
+#### (Note: Connect to the VNC port once the domain starts)
 ```
 virt-install --name ubuntu01 --ram=2048 \
     --vcpus=1 --cpu host --hvm \
@@ -337,12 +340,13 @@ virsh shutdown --domain VM_NAME
 virsh destroy --domain VM_NAME # forces removal of a domain
 ```
 
-### Get the VNC port where "host-a" = libvert host, "host-b" = VM, "host-c" = VNC host
+### Connect via VNC port 
+(Where "host-a" = libvert host, "host-b" = VM, "host-c" = VNC host)
 
-#### On host A get VNC port for host-b:
+#### From host A, get the VNC port for host-b:
 ```sudo virsh dumpxml host-b |grep vnc```
 
-#### From host-c, port forward the vnc port e.g.:
+#### From host-c, port forward a local port to host-b's VNC port:
 ```ssh user@host-a -L [VNC port]:127.0.0.1:5901[VNC port]```
 
-#### From host-c connect VNC to 127.0.0.1:[VNC port]
+#### From host-c connect with VNC using 127.0.0.1:[VNC port]
