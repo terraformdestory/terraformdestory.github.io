@@ -318,8 +318,8 @@ sar -n TCP,ETCP 1
 top
 ```
 ## libvirt basics
-#### libvirt boot images: /var/lib/libvirt/boot
-#### libvirt disk images: /var/lib/libvirt/images/
+##### libvirt boot images: /var/lib/libvirt/boot
+##### libvirt disk images: /var/lib/libvirt/images/
 <br>
 
 ### Install a VM (Note: You will need to connect to the VNC port once the domain starts)
@@ -338,6 +338,7 @@ virsh destroy --domain VM_NAME # forces removal of a domain
 ```
 
 ### Get the VNC port where "host-a" = libvert host, "host-b" = VM, "host-c" = VNC host
+
 #### On host A get VNC port for host-b:
 ```sudo virsh dumpxml host-b |grep vnc```
 
