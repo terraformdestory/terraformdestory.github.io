@@ -326,7 +326,7 @@ top
 ```
 virt-install --name ubuntu01 --ram=2048 \
     --vcpus=1 --cpu host --hvm \
-    --disk path=/var/lib/libvirt/images/ubuntu-tang,size=8 \
+    --disk path=/var/lib/libvirt/images/ubuntu01,size=8 \
     --cdrom /var/lib/libvirt/boot/ubuntu-22.04.2-live-server-amd64.iso \
     --graphics vnc
 ```
