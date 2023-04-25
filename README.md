@@ -347,6 +347,54 @@ virsh destroy --domain VM_NAME # forces removal of a domain
 ```sudo virsh dumpxml host-b |grep vnc```
 
 #### From host-c, port forward a local port to host-b's VNC port:
-```ssh user@host-a -L [VNC port]:127.0.0.1:5901[VNC port]```
+```ssh user@host-a -L [VNC port]:127.0.0.1:[VNC port]```
 
 #### From host-c connect with VNC using 127.0.0.1:[VNC port]
+
+### Get Network Information
+```
+virsh net-list # show networks
+
+virsh net-dhcp-leases default # show DHCP leases for network "default"
+```
+
+### Add a disk to a VM
+```
+qemu-img create -f raw /var/lib/libvirt/images/ubuntu03-disk3-1G 1G
+
+virsh attach-disk ubuntu03 --source /var/lib/libvirt/images/ubuntu03-disk3-1G --target vdb --persistent
+```
+
+## LUKS encryption on Unbuntu 20.04
+### Create a file system on a LUKS encrypted device
+```
+export DEVICE=/dev/vdd
+export MOUNTPOINT=/encrypted_vdd
+export LUKS_NAME=luks-vdd
+export PASS_FILE=/root/phrase.txt
+
+apt -y install clevis clevis-luks clevis-systemd
+systemctl enable clevis-luks-askpass.path
+
+openssl rand -hex 256 > $PASS_FILE;chmod 400 $PASS_FILE
+cryptsetup -q luksFormat $DEVICE $PASS_FILE
+cryptsetup luksDump $DEVICE # to view the LUKS header
+
+# Test tang and get signing key
+echo "This is the message." > plain.txt
+clevis encrypt tang '{"url":"http://tang01"}' < plain.txt > secret.jwe
+clevis decrypt < secret.jwe
+
+clevis luks bind -f -k $PASS_FILE -d $DEVICE tang '{"url":"http://tang01","thp":"$SIGNING_KEY"}' 
+
+cryptsetup luksDump $DEVICE # there should be a keyslot using clevis
+
+# unlock the device
+clevis luks unlock -d $DEVICE -n $LUKS_NAME
+
+mkfs.xfs /dev/mapper/$LUKS_NAME #create a file system
+echo "$LUKS_NAME $DEVICE none _netdev" >> /etc/crypttab
+echo "/dev/mapper/$LUKS_NAME $MOUNTPOINT xfs defaults,_netdev 0 2" >> /etc/fstab
+mkdir $MOUNTPOINT
+mount -a
+```
