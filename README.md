@@ -389,7 +389,7 @@ clevis luks bind -f -k $PASS_FILE -d $DEVICE tang '{"url":"http://tang01","thp":
 
 cryptsetup luksDump $DEVICE # there should be a keyslot using clevis
 
-# unlock the device
+# On the NBDE client, unlock the device and configure to mount at boot
 clevis luks unlock -d $DEVICE -n $LUKS_NAME
 
 mkfs.xfs /dev/mapper/$LUKS_NAME #create a file system
@@ -397,4 +397,17 @@ echo "$LUKS_NAME $DEVICE none _netdev" >> /etc/crypttab
 echo "/dev/mapper/$LUKS_NAME $MOUNTPOINT xfs defaults,_netdev 0 2" >> /etc/fstab
 mkdir $MOUNTPOINT
 mount -a
+```
+
+### Rotating tang keys
+```
+# form the tang server
+cd /var/db/tang
+for file in $(ls -1 *.jwk); do mv $file .$file; done
+/usr/libexec/tangd-keygen /var/db/tang
+tang-show-keys # to display the new signing key
+
+# update bindings on the NBDE client
+clevis luks list -d $DEVICE
+clevis luks report -d $DEVICE # updates the key
 ```
