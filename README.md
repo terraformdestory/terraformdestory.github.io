@@ -412,6 +412,7 @@ clevis luks list -d $DEVICE
 clevis luks report -d $DEVICE # updates the key
 ```
 ## Analyze [RHEL 8 kdump output](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/assembly_dumping-a-crashed-kernel-for-later-analysis_configuring-basic-system-settings)
+```
 crash /usr/lib/debug/lib/modules/$KERNEL/vmlinux /var/crash/$DUMP/vmcore
 # crash commands
 crash> log # display kernel message buffer
