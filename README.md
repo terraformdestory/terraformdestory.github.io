@@ -401,7 +401,7 @@ mount -a
 
 ### Rotating tang keys
 ```
-# form the tang server
+# from the tang server
 cd /var/db/tang
 for file in $(ls -1 *.jwk); do mv $file .$file; done
 /usr/libexec/tangd-keygen /var/db/tang
