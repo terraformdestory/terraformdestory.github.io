@@ -232,6 +232,10 @@ ansible all -m package -a "name=httpd state=present"
 #ansible modules
 ansible-doc -l
 ansible-doc ping
+
+# Quick and dirty ansible environment
+cat 192.168.1.200 > hosts
+ansible -e 'ansible_python_interpreter=$PATH_TO_PYTHON_ON_REMOTE' -i ./hosts --user $REMOTE_USER all -m ping
 ```
 
 ## ssh
