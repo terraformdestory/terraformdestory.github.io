@@ -442,3 +442,8 @@ sadf -c sa28 > sa28.new # converts older binary sar28 format to installed sar fo
 sar -A -t -f sa28.new > sar28 # converts binary sar28.new to ascii sar28 
 sar -d -f sal4.new|sort -n -k +9 # sort sar output by the 9th column
 ```
+
+## Linux boot process
+### RHEL 
+#### grub setting for dracut shell
+change ```rd.shell=0``` to ```rd.break``` to drop into dracut shell on boot
