@@ -447,3 +447,22 @@ sar -d -f sal4.new|sort -n -k +9 # sort sar output by the 9th column
 ### RHEL 
 #### grub setting for dracut shell
 change ```rd.shell=0``` to ```rd.break``` to drop into dracut shell on boot
+
+## Transciever Speeds and Feeds
+
+| Module   | Ethernet Speed|
+|----------|-------------|
+| SFP | 4 Gbits/s |
+| SFP+ | 10 Gbits/s |
+| SFP28 | 25 Gbits/s |
+| QSFP+ | 40Gbits/s or 4 x 10 Gbits/s |
+| QSFP28 | 100Gbits/s or 4 x 25 Gbits/s |
+| QSFP56 | 200Gbits/s | 
+| QSFP-DD | 400 Gbits/s or 8 x 50 Gbits/s| 
+
+| Fibre Channel (FC) SFP+ Modules| FC Speed |
+|----------|-------------|
+| FC SFP+ | 8G |
+| FC SFP+ | 16G |
+| FC SFP+ | 32G |
+| FC SFP+ | 64G |
