@@ -192,6 +192,7 @@ git stash # caches local changes
 git pull # syncs from origin
 git stash pop # restores local changes
 ```
+![git cheat sheet](/images/gitcheatsheet.jpeg)
 
 ## Powers of 2
 ```
