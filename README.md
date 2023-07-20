@@ -110,7 +110,7 @@ ctrl + b, % (split vertically)
 
 ctrl + b, [arrow] (navigate panes)
 
-ctrl + b, :, setw synchronize-panes on
+ctrl + b, :, setw synchronize-panes [on,off]
 
 #### Enable mouse scroll
 ctrl + b, :, set -g mouse on
