@@ -161,6 +161,9 @@ docker push [user_name]/[container_name] # publish a container to the registry
 
 docker build -t [image name] .
 
+# Stop all docker processes
+for proc in $(docker ps |grep -v CONT|awk '{print $1}'); do docker kill $proc; done
+
 ```
 ## Hashicorp Vault
 
