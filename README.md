@@ -103,6 +103,8 @@ tmux ls
 
 tmux a -t [session] (attach to a specific session)
 
+tmux rename-session -t[session] [new_session_name]
+
 #### Managing Panes
 ctrl + b, " (split horizontal)
 
