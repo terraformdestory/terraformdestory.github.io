@@ -94,6 +94,15 @@ gcloud compute instances create $VM_NAME \
         --zone=$GCP_ZONE
 ```
 
+## iperf example
+```
+# server
+iperf -s –w 2m
+
+#client
+iperf -c [server] –w 2m –t 30s –i 1s
+```
+
 ## tmux
 crtl + b [command] (or : for tmux command prompt)
 
