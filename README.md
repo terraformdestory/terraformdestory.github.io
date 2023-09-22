@@ -451,11 +451,11 @@ See https://github.com/ryran/xsos/ for usage
 
 See https://github.com/ryran/rsar for rsar usage
 
-## Converting and analyze sar data with sar
+## Converting and analyzing sar data
 ```
 sadf -c sa28 > sa28.new # converts older binary sar28 format to installed sar format 
-sar -A -t -f sa28.new > sar28 # converts binary sar28.new to ascii sar28 
 sar -d -f sal4.new|sort -n -k +9 # sort sar output by the 9th column
+sar -S -f sal4.new # view swap information
 ```
 
 ## Linux boot process
