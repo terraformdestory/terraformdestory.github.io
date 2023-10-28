@@ -78,19 +78,21 @@ gcloud compute ssh vm-name
 ```
 #!/bin/bash
 
-VM_PREFIX=$1
-IMAGE_FAMILY=ubuntu-2204-lts
+VM_PREFIX=vm
+IMAGE_FAMILY=debian-12
 RND_STRING=$(echo $RANDOM|md5sum|cut -c1-4)
 GCP_ZONE=us-central1-b
 VM_NAME=$VM_PREFIX-$IMAGE_FAMILY-$RND_STRING
-IMAGE_PROJECT=ubuntu-os-cloud
+IMAGE_PROJECT=debian-cloud
 
 # Deploy Compute Engine VM instance
 gcloud compute instances create $VM_NAME \
         --image-project=$IMAGE_PROJECT \
         --image-family=$IMAGE_FAMILY \
         --boot-disk-type=pd-standard \
+        --boot-disk-size=29G \
         --machine-type=e2-micro \
+        --preemptible \
         --zone=$GCP_ZONE
 ```
 
