@@ -1,0 +1,41 @@
+# Clone the git repo:
+git clone https://github.com/zoneminder-containers/zoneminder-base/tree/main
+
+# Copy files into docker-compose dir:
+cp zoneminder-base/docker-compose.yml zoneminder-base/.env .
+
+# Edit settings to redirect ports etc.
+
+docker-compose up -d
+
+The web console is available at http://[hostname]:listeningport/zm
+
+# Configure Zoneminder
+In the Console click Add (subfeed)
+  - General
+    - Server = Auto
+    - Source Type = ffmpeg
+    - Function = Mocord
+    - Analysis = Enabled
+  - Source
+    - Source Path = rtmp://192.168.xx.xx/bcs/channel0_sub.bcs?channel=0&stream=1&user=admin&password=[device passwd]
+    - Method = TCP
+    - Capture Resolution (pixels) = 640 x 480
+  - Storage
+    - Video Write = Camera Passthrough
+  - Save
+
+  In the Console click Add (main)
+ - General
+    - Server = Auto
+    - Source Type = ffmpeg
+    - Function = NoDect
+    - Analysis = Disabled
+  - Source
+    - Source Path = rtmp://192.168.xx.xx/bcs/channel0_sub.bcs?channel=0&stream=1&user=admin&password=[device passwd]
+    - Method = TCP
+    - Capture Resolution (pixels) = 1280 x 1024
+  - Storage
+    - Video Write = Camera Passthrough
+  - Save
+  
