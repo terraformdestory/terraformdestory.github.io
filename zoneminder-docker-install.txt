@@ -41,7 +41,7 @@ In the Console click Add (subfeed)
     - Video Write = Camera Passthrough
   - Save
 
-Adding a locally connected (docker host) 
+Adding a locally connected (docker host) Logitech C920
   - General
     - Server = Auto
     - Source Type = Local
