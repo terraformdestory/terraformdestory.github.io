@@ -40,4 +40,19 @@ In the Console click Add (subfeed)
   - Storage
     - Video Write = Camera Passthrough
   - Save
+
+Adding a locally connected (docker host) 
+  - General
+    - Server = Auto
+    - Source Type = Local
+    - Function = Mocord
+    - Analysis = Enabled
+  - Source
+    - Device Path: /dev/video0
+    - Device Format: NTSC
+    - Capture Palette: *MJPEG
+    - Target ColorSpace: 24 bit color
+    - Capture Resolution: 1280x720
+    - Storage
+      -  Video Writer: Disabled
   
