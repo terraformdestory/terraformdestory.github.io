@@ -483,3 +483,14 @@ change ```rd.shell=0``` to ```rd.break``` to drop into dracut shell on boot
 | FC SFP+ | 16G |
 | FC SFP+ | 32G |
 | FC SFP+ | 64G |
+
+## ping an IP Range
+```
+#!/bin/bash
+PREFIX=192.168.86
+for IP in $(seq 1 254)
+do 
+	ping -c 1 -t 1 $PREFIX.$IP > /dev/null
+	[ $? -eq 0 ] && echo "$PREFIX.$IP UP" || : 
+done
+```
