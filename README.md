@@ -96,13 +96,29 @@ gcloud compute instances create $VM_NAME \
         --zone=$GCP_ZONE
 ```
 
-## iperf example
+## iperf examples
 ```
 # server
-iperf -s –w 2m
+iperf3 -s
 
-#client
-iperf -c [server] –w 2m –t 30s –i 1s
+#client UDP test
+iperf3 -c [server] -u -i 1 -b 200m -P 4 -V -t 60
+# Where c= client mode
+# -u = UDP
+# -i = seconds between throughput reports
+# -b = bitrate in bits/sec per stream (if -P is set)
+# -P = number of parallel streams
+# -V = verbose
+# -t = time in seconds to transmit
+
+#client TCP test
+iperf3 -c [server] -P 4 -V -t 60
+# Where c= client mode
+# -P = number of parallel streams
+# -V = verbose
+# -t = time in seconds to transmit
+
+
 ```
 
 ## tmux
