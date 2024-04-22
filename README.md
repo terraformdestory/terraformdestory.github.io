@@ -118,6 +118,9 @@ iperf3 -c [server] -P 4 -V -t 60
 # -V = verbose
 # -t = time in seconds to transmit
 
+# Capturing output with tcpdump
+sudo tcpdump -i [interface] \(src host [ip] or src host [ip] or dst host [ip] or dst host [ip]\) \
+and port 5201 -s 128 -c 10000 -n -w 'outputfile.pcap' -Z [user you want to be able to read the dump]
 
 ```
 
