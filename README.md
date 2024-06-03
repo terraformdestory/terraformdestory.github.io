@@ -123,6 +123,10 @@ sudo tcpdump -i [interface] \(src host [ip] or src host [ip] or dst host [ip] or
 and port 5201 -s 128 -c 10000 -n -w 'outputfile.pcap' -Z [user you want to be able to read the dump]
 
 ```
+## netstat: show listening ports
+```
+netstat -plnt
+```
 
 ## tmux
 crtl + b [command] (or : for tmux command prompt)
