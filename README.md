@@ -95,6 +95,10 @@ gcloud compute instances create $VM_NAME \
         --preemptible \
         --zone=$GCP_ZONE
 ```
+### Copy ssh keys for oslogin
+```
+gcloud compute os-login ssh-keys add --key="($ssh-add -L | grep publickey)" --project=$PROJECT
+```
 
 ## iperf examples
 ```
