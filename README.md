@@ -286,10 +286,17 @@ ansible -e 'ansible_python_interpreter=$PATH_TO_PYTHON_ON_REMOTE' -i ./hosts --u
 ```
 # Generate an ssh key
 ssh-keygen -t rsa -f ~/.ssh/mynewkey -C myusername -b 2048
+
 # Forward local port 2222 to 443 on remote host
 ssh -L 2222:127.0.0.1:443 remote-host
+
 # copy ssh key to another host
 ssh-copy-id myuser@anotherhost
+
+# Create an ssh proxy connection
+Host [connection name]
+    ProxyCommand ssh -q %r@[proxy host] 'exec nc [target host]] %p'
+    User [target host user]
 ```
 
 ## RHEL 8 Swapfile create
@@ -372,7 +379,7 @@ top
 /var/lib/libvirt/boot # libvirt boot images
 /var/lib/libvirt/images/ # libvirt disk images
 ```
-### Installing  a VM <br> 
+### Installing a VM with graphics<br> 
 #### (Note: Connect to the VNC port once the domain starts)
 ```
 virt-install --name ubuntu01 --ram=2048 \
@@ -381,6 +388,28 @@ virt-install --name ubuntu01 --ram=2048 \
     --cdrom /var/lib/libvirt/boot/ubuntu-22.04.2-live-server-amd64.iso \
     --graphics vnc
 ```
+
+### Installing a headless VM<br>
+```
+virt-install --name debian12 --ram=2048 \
+    --vcpus=2 --cpu host --hvm \
+    --disk path=ath=/var/lib/libvirt/images/debian12,size=100 \
+    --location /var/lib/libvirt/boot/debian-12.5.0-amd64-netinst.iso \
+    --osinfo debian12 \
+    --network network=default \
+    --graphics none \
+    --console pty,target_type=serial \
+    --extra-args "console=ttyS0"
+
+# Connect/reconnect to the console
+virsh console debian12
+```
+
+### Configure VM to autostart
+```
+virsh autostart [domain]
+```
+
 ### Manage domains (VMs)
 ```
 virsh list --all
