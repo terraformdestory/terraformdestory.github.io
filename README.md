@@ -293,7 +293,7 @@ ssh -L 2222:127.0.0.1:443 remote-host
 # copy ssh key to another host
 ssh-copy-id myuser@anotherhost
 
-# Create an ssh proxy connection
+# Create an ssh proxy connection (add to ~/.ssh/config)
 Host [connection name]
     ProxyCommand ssh -q %r@[proxy host] 'exec nc [target host]] %p'
     User [target host user]
