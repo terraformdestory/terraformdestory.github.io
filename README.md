@@ -73,6 +73,11 @@ gcloud sql instances describe [instance_name]
 gcloud compute config-ssh #configure ~/.ssh/config file with all VM instances in the current project
 
 gcloud compute ssh vm-name
+
+# Manage Configurations
+gcloud config configurations list
+gcloud config configurations activate [config name]
+gcloud config configurations create [config name]
 ```
 ### Deploy a Compute Engine VM
 ```
