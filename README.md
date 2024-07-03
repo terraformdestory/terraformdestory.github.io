@@ -93,7 +93,7 @@ gcloud compute instances create $VM_NAME \
 ### Managing Networks
 ```sh
 # Create a VPC and subnet
-gcloud compute networks create [VPC_network_name]] --project=[project_name]] --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional
+gcloud compute networks create [VPC_network_name]] --project=[project_name] --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional
 gcloud compute networks subnets create [subnet name]] --[project_name] --range=[0.0.0.0/0]] --stack-type=IPV4_ONLY --network=managementnet --region=[region]]
 
 # View VPN Networks and Subnets
@@ -101,7 +101,7 @@ gcloud compute networks list
 gcloud compute networks subnets list --sort-by=NETWORK
 
 # Create a firewall rule to allow ssh,rdp, and icmp
-gcloud compute --project=[project]] firewall-rules create [rule_name]] --direction=INGRESS --priority=1000 --network=[VPN_network_name]] --action=ALLOW --rules=tcp:22,tcp:3389,icmp --source-ranges=0.0.0.0/0
+gcloud compute --project=[project]] firewall-rules create [rule_name] --direction=INGRESS --priority=1000 --network=[VPN_network_name]] --action=ALLOW --rules=tcp:22,tcp:3389,icmp --source-ranges=0.0.0.0/0
 
 # View firewall rules
 gcloud compute firewall-rules list --sort-by=NETWORK
