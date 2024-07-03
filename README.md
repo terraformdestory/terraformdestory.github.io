@@ -51,33 +51,23 @@ metadata service: 169.254.169.254
 curl "http://metadata.google.internal/computeMetadata/v1/instance/image" -H "Metadata-Flavor: Google"
 ```
 
+### Environment Configuration
 ```sh
-glcoud auth login
-
-gcloud auth list
-
-gcloud config set accessibility/screen_reader false
-
-gcloud config set project [project]
-
-gcloud config set compute/region [region]
-
-gcloud compute project-info add-metadata --metadata google-compute-default-region=[region]
-
-gcloud config configurations list
-
-gcloud sql instances list
-
-gcloud sql instances describe [instance_name]
-
-gcloud compute config-ssh #configure ~/.ssh/config file with all VM instances in the current project
-
-gcloud compute ssh vm-name
-
-# Manage Configurations
 gcloud config configurations list
 gcloud config configurations activate [config name]
 gcloud config configurations create [config name]
+glcoud auth login
+gcloud auth list
+gcloud config set accessibility/screen_reader false
+gcloud config set project [project]
+gcloud config set compute/region [region]
+gcloud compute project-info add-metadata --metadata google-compute-default-region=[region]
+```
+### ssh to VMs
+```sh
+gcloud compute config-ssh #configure ~/.ssh/config file with all VM instances in the current project
+gcloud compute ssh vm-name
+gcloud compute os-login ssh-keys add --key="($ssh-add -L | grep publickey)" --project=$PROJECT
 ```
 ### Deploy a Compute Engine VM
 ```
@@ -100,12 +90,24 @@ gcloud compute instances create $VM_NAME \
         --preemptible \
         --zone=$GCP_ZONE
 ```
-### Copy ssh keys for oslogin
-```
-gcloud compute os-login ssh-keys add --key="($ssh-add -L | grep publickey)" --project=$PROJECT
+### Managing Networks
+```sh
+# Create a VPC and subnet
+gcloud compute networks create [VPC_network_name]] --project=[project_name]] --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional
+gcloud compute networks subnets create [subnet name]] --[project_name] --range=[0.0.0.0/0]] --stack-type=IPV4_ONLY --network=managementnet --region=[region]]
+
+# View VPN Networks and Subnets
+gcloud compute networks list
+gcloud compute networks subnets list --sort-by=NETWORK
+
+# Create a firewall rule to allow ssh,rdp, and icmp
+gcloud compute --project=[project]] firewall-rules create [rule_name]] --direction=INGRESS --priority=1000 --network=[VPN_network_name]] --action=ALLOW --rules=tcp:22,tcp:3389,icmp --source-ranges=0.0.0.0/0
+
+# View firewall rules
+gcloud compute firewall-rules list --sort-by=NETWORK
 ```
 
-## iperf examples
+## iperf3 examples
 ```
 # server
 iperf3 -s
