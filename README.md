@@ -106,6 +106,20 @@ gcloud compute --project=[project]] firewall-rules create [rule_name] --directio
 # View firewall rules
 gcloud compute firewall-rules list --sort-by=NETWORK
 ```
+### Cloud DNS
+```sh
+# Create a managed DNS Zone
+gcloud dns managed-zones create example --description=test --dns-name=example.com --networks=default --visibility=private
+
+# Create a cloud DNS routing policy
+gcloud dns record-sets create geo.example.com \
+--ttl=5 --type=A --zone=example \
+--routing-policy-type=GEO \
+--routing-policy-data="us-central1=[IP_Address];europe-west1=[IP_Address]P"
+
+# List DNS Zone records
+gcloud dns record-sets list --zone=example
+```
 
 ## iperf3 examples
 ```
