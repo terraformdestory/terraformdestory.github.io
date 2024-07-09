@@ -321,6 +321,13 @@ ssh -J [proxy_host] [user]@[destination_host]
 Host [connection name]
     ProxyCommand ssh -q %r@[proxy host] 'exec nc [target host]] %p'
     User [target host user]
+
+# Alternative config
+Host [target_host]
+    Hostname [target_hostname_or_ip]
+    User [target_user]
+    ProxyJump [proxy_host]
+
 ```
 
 ## RHEL 8 Swapfile create
