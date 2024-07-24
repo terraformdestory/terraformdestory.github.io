@@ -581,3 +581,8 @@ do
 	[ $? -eq 0 ] && echo "$PREFIX.$IP UP" || : 
 done
 ```
+## OS X
+```
+# Interface information including DHCP
+ipconfig getpacket [interface]
+```   
